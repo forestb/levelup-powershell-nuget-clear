@@ -1,7 +1,7 @@
 
 # levelup-powershell-nuget-reset
 
-This project adds the `Reset-LevelUpNuGet` command to your shell.
+This project adds the `Reset-LevelUpNuGet` command to your shell. The intent is for the `Reset-LevelUpNuGet` command to be executed within directories containing POS integration `.sln` files.  (e.g. Aloha, POSitouch, Micros, etc)
 
 ## Getting Started
 
