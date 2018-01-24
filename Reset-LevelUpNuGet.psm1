@@ -28,13 +28,10 @@ function Read-SolutionExists {
 }
 
 function Clear-NuGetCache {
-  Write-Host "Clearing NuGet HTTP cache, NuGet cache, and NuGet global packages cache..."
   nuget.exe locals -clear all  
 }
 
 function Clear-LevelUpPackages {
-  Write-Host "Clearing local LevelUp packages..."
-
   # If the current directory has a \packages\ directory
   # Navigate within it and delete all 'LevelUp-*' files
   $CurrentPath = Get-CurrentDirectory
@@ -44,29 +41,38 @@ function Clear-LevelUpPackages {
     Foreach-Object { 
     Remove-Item $_.FullName -Recurse 
   }
+}
 
+function Restore-NuGetPackages {
   # Call 'nuget restore' on the solution file
+  $CurrentPath = Get-CurrentDirectory
   $SlnFiles = Get-SolutionFiles $CurrentPath
   
   $SlnFiles | 
     Foreach-Object {  
     nuget restore $_.FullName
   }
-
-  Write-Host "Complete."
 }
 
-function Clear-LevelUpNuGet {
+function Reset-LevelUpNuGet {
   $result = Read-SolutionExists
 
   if ($result -eq $FALSE) {
     Write-Host "Exiting - there are no .sln files in the current directory."
   }
   else {
+    Write-Host "Clearing NuGet HTTP cache, NuGet cache, and NuGet global packages cache..."
     Clear-NuGetCache
+
+    Write-Host "Clearing local LevelUp packages..."
     Clear-LevelUpPackages
+
+    Write-Host "Restoring NuGet packages..."
+    Restore-NuGetPackages
+
+    Write-Host "Complete."
   }  
 }
 
 # Export the module
-Export-ModuleMember -Function Clear-LevelUpNuGet
+Export-ModuleMember -Function Reset-LevelUpNuGet
