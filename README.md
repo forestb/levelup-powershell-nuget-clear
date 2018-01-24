@@ -1,7 +1,7 @@
 
-# levelup-powershell-nuget-clear
+# levelup-powershell-nuget-reset
 
-This project add's the `Clear-LevelUpNuGet` command to your shell.
+This project add's the `Reset-LevelUpNuGet` command to your shell.
 
 ## Getting Started
 
@@ -10,7 +10,7 @@ This project add's the `Clear-LevelUpNuGet` command to your shell.
 First, clone this repository. Take note of the file location.
 
 ```
-c:\...\levelup-powershell-nuget-clear\Clear-LevelUpNuGet.psm1
+c:\...\levelup-powershell-nuget-reset\Reset-LevelUpNuGet.psm1
 ```
 
 Locate your powershell profile, we need to edit it.
@@ -29,26 +29,26 @@ C:\> notepad $profile
 Add the (following) `Import-Module` command to your profile.
 
 ```
-Import-Module "C:\...\levelup-powershell-nuget-clear\Clear-LevelUpNuGet.psm1"
+Import-Module "C:\...\levelup-powershell-nuget-reset\Reset-LevelUpNuGet.psm1"
 ```
 
 Finished. Restart any shell instances.
 
 ### Usage
 
-Note: The `Clear-LevelUpNuget` function must be used in a directory with a `.sln` file.
+Note: The `Reset-LevelUpNuget` function must be used in a directory with a `.sln` file.
 
 #### Example - Invalid directory
 
 ```
-C:\> Clear-LevelUpNuGet
+C:\> Reset-LevelUpNuGet
 Exiting - there are no .sln files in the current directory.
 ```
 
 #### Example - Valid directory
 
 ```
-C:\Projects\TheLevelUp\pos-ncr-aloha [master]> Clear-LevelUpNuGet
+C:\Projects\TheLevelUp\pos-ncr-aloha [master]> Reset-LevelUpNuGet
 Clearing NuGet HTTP cache, NuGet cache, and NuGet global packages cache...
 Clearing NuGet HTTP cache: C:\Users\forest.balk\AppData\Local\NuGet\v3-cache
 Clearing NuGet global packages cache: C:\Users\forest.balk\.nuget\packages\
