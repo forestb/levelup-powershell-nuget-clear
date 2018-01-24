@@ -1,7 +1,7 @@
 
 # levelup-powershell-nuget-reset
 
-This project add's the `Reset-LevelUpNuGet` command to your shell.
+This project adds the `Reset-LevelUpNuGet` command to your shell.
 
 ## Getting Started
 
